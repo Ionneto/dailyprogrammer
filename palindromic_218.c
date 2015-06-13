@@ -1,9 +1,10 @@
 	#include <stdio.h>
 	#include <stdlib.h>
+	#include <math.h>
 
-	unsigned long long reverse(unsigned long long a) {
-		unsigned long long aux;
-		unsigned long long rev = 0;
+	long long reverse(long long a) {
+		long long aux;
+		long long rev = 0;
 		while(a > 0){
 			aux = a%10;
 			rev = rev*10 + aux;
@@ -12,14 +13,25 @@
 		return rev;
 	}
 
+	long long reverse2(long long a) {
+		long long aux;
+		long long rev = 0;
+		while(a>0){
+			lldiv_t longdiv = lldiv(a, 10);
+			rev = rev*10 + longdiv.rem;
+			a = longdiv.quot;
+		}
+		return rev;
+	}
+
 	int main() {
-		unsigned long long cont;
-		unsigned long long input;
-		unsigned long long rev;
-		unsigned long long original;
+		long long cont;
+		long long input;
+		long long rev;
+		long long original;
 
 		scanf("%d", &input);
-		rev = reverse(input);
+		rev = reverse2(input);
 		original = input;
 
 		if(rev == input) {
@@ -29,7 +41,7 @@
 
 		while(rev!=input) {
 			input = rev + input;
-			rev = reverse(input);
+			rev = reverse2(input);
 			cont ++;
 
 		//printf("%d = %d\n",input, rev );
