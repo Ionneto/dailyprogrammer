@@ -2,20 +2,23 @@
 	#include <stdlib.h>
 	#include <math.h>
 
-	long long reverse(long long a) {
-		long long aux;
-		long long rev = 0;
+	unsigned long long reverse(unsigned long long a) {
+		unsigned long long aux;
+		unsigned long long rev = 0;
+		printf("%llu\n", a);
 		while(a > 0){
 			aux = a%10;
 			rev = rev*10 + aux;
+			printf("%llu %llu\n", aux, rev);
 			a = a/10;
+			printf("%llu\n", a);
 		}
 		return rev;
 	}
 
-	long long reverse2(long long a) {
-		long long aux;
-		long long rev = 0;
+	unsigned long long reverse2(unsigned long long a) {
+		unsigned long long aux;
+		unsigned long long rev = 0;
 		while(a>0){
 			lldiv_t longdiv = lldiv(a, 10);
 			rev = rev*10 + longdiv.rem;
@@ -25,13 +28,13 @@
 	}
 
 	int main() {
-		long long cont;
-		long long input;
-		long long rev;
-		long long original;
+		unsigned long long cont;
+		unsigned long long input;
+		unsigned long long rev;
+		unsigned long long original;
 
 		scanf("%d", &input);
-		rev = reverse2(input);
+		rev = reverse(input);
 		original = input;
 
 		if(rev == input) {
@@ -41,14 +44,15 @@
 
 		while(rev!=input) {
 			input = rev + input;
-			rev = reverse2(input);
+			rev = reverse(input);
 			cont ++;
 
 		//printf("%d = %d\n",input, rev );
 		}
 
-		printf("%lu is the palindromic of %lu, it took %lu sums with the reverse.\n", input, original, cont);
+		printf("%llu is the palindromic of %llu, it took %llu sums with the reverse.\n", input, original, cont);
 
 
 		return 0;
 	}
+

@@ -1,8 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// Criar struct evento = 1024 chars
+// 
+
 void adiciona(char **evento){
 	printf("%s\n", evento);
+	//lista[i] = evento;
 }
 
 void deleta(int evento){
@@ -15,11 +19,13 @@ int main() {
 	int option;
 	int numb;
 	char *aux;
+	// lista de struct evento, máximo de 20 eventos.
+	//char **lista = malloc(sizeof(char)*1024*20);
 	while(1){
-		//pede entrada, opções 1, 2, 3 + tratamento
+		// pede entrada, opções 1, 2, 3 + tratamento
 		printf("Escolha uma opção:\n 1) Adicionar \n 2) Apagar \n 3) Ver\n");
 		scanf("%d", &option );
-		printf("%d\n", option );
+		// printf("%d\n", option );
 		
 		if(option == 1) {
 			printf("Insira a tarefa a adicionar\n");
