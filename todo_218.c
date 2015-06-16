@@ -1,16 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void adiciona(char *evento){
-	printf("%s\n", *evento);
+void adiciona(char **evento){
+	printf("%s\n", evento);
 }
 
-void deleta(int evento){}
+void deleta(int evento){
+	printf("%d\n", evento);
+}
 
 void imprime(){}
 
 int main() {
 	int option;
+	int numb;
 	char *aux;
 	while(1){
 		//pede entrada, opções 1, 2, 3 + tratamento
@@ -21,9 +24,15 @@ int main() {
 		if(option == 1) {
 			printf("Insira a tarefa a adicionar\n");
 			scanf("%s", &aux);
-			printf("%s\n", aux[1] );
-			//adiciona(aux);
+			adiciona(&aux);
+		} else
+
+		if(option == 2 ){
+			printf("Qual evento deseja deletar(Insira o número)\n");
+			scanf("%d", &numb);
+			deleta(numb);
 		}
+
 		/*
 			If entrada adição:
 				Adiciona um evento novo no array
